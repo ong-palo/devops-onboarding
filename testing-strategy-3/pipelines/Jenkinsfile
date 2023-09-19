@@ -47,7 +47,9 @@ pipeline {
     }
     post {
         always {
-            sh "./${SCRIPTS_PATH}/close.sh"
+            dir("${SCRIPTS_PATH}") {
+                sh "./close.sh"
+            }
         }
     }
 }
