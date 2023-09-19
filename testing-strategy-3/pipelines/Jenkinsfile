@@ -12,6 +12,7 @@ pipeline {
         ALPHA="alpha"
         PREPROD="preprod"
         PROD="prod"
+        REPORT_DIR="${env.PROJECT_PATH}/e2e-web/cypress/cucumber-json"
     }
 
     stages {
@@ -31,9 +32,10 @@ pipeline {
                     sh """
                     echo "Test"
                     npm run test
+                    npm run generate-report
                     """
+                    publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: "${REPORT_DIR}", reportFiles: 'index.html', reportName: 'Cypress HTML Report', reportTitles: '', useWrapperFileDirectly: true])
                 }
-            }
         }
         stage('Deployment') {
             steps {
