@@ -28,7 +28,7 @@ pipeline {
         stage('Test environment DEV') {
             steps {
                 dir("${E2E_PATH}") {
-                   sh """
+                    sh """
                     echo "Test"
                     npm run test
                     """
@@ -48,7 +48,9 @@ pipeline {
     post {
         always {
             dir("${WEB_PATH}") {
-                kill -9 $(lsof -ti:3000)
+                sh """
+                kill $(lsof -t -i:3000)
+                """
             }
         }
     }
