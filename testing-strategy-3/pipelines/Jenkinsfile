@@ -49,7 +49,7 @@ pipeline {
         always {
             dir("${WEB_PATH}") {
                 sh """
-                kill $(lsof -t -i:3000)
+                kill lsof -t -i:3000
                 """
             }
         }
