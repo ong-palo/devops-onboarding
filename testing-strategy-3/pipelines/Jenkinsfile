@@ -49,6 +49,7 @@ pipeline {
         always {
             sh """
             let PID = netstat -ano | findstr :3000
+            echo "The PID is $PID"
             taskkill /PID $PID /F
             """
         }
