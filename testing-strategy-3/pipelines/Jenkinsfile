@@ -48,7 +48,7 @@ pipeline {
     post {
         always {
             sh """
-            PID = netstat -ano | findstr :3000
+            PID=netstat -ano | findstr :3000
             echo "The PID is $PID"
             taskkill /PID $PID /F
             """
