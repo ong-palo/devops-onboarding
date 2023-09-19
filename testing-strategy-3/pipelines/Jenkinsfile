@@ -47,9 +47,11 @@ pipeline {
     }
     post {
         always {
-            sh """
-            kill -9 $(lsof -ti:3000)
-            """
+            dir("${WEB_PATH}") {
+                sh """
+                kill -9 $(lsof -ti:3000)
+                """
+            }
         }
     }
 }
