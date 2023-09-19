@@ -36,6 +36,7 @@ pipeline {
                     """
                     publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: "${REPORT_DIR}", reportFiles: 'index.html', reportName: 'Cypress HTML Report', reportTitles: '', useWrapperFileDirectly: true])
                 }
+            }
         }
         stage('Deployment') {
             steps {
@@ -56,5 +57,4 @@ pipeline {
             }
         }
     }
-}
 }
