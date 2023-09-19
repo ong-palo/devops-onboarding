@@ -47,11 +47,7 @@ pipeline {
     }
     post {
         always {
-            dir("${WEB_PATH}") {
-                sh """
-                kill lsof -t -i:3000
-                """
-            }
+            sh "${SCRIPTS_PATH}/close.sh"
         }
     }
 }
