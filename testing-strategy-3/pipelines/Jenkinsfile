@@ -45,4 +45,12 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            sh """
+            let PID = netstat -ano | findstr :3000
+            taskkill /PID $PID /F
+            """
+        }
+    }
 }
