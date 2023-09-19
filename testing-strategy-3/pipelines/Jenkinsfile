@@ -31,7 +31,6 @@ pipeline {
                 dir("${E2E_PATH}") {
                    sh """
                     echo "Test"
-                    npm i
                     npm run test
                     """
                 }
