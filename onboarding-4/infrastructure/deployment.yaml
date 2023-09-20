@@ -1,19 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: _____
+  name: deployme
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: _____
+      app: deployme
   template:
     metadata:
       labels:
-        app: _____
+        app: deployme
     spec:
       containers:
-      - name: _____
-        image: _____
+      - name: deployme
+        image: deployme
+        imagePullPolicy: Never
         ports:
-        - containerPort: _____
+          - containerPort: 3000
